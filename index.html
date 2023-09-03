@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            color: crimson;
+            font-size: 24px;
+        }
+        div {
+            /* align-self: center;
+            justify-self: center; */
+            margin-top: 300px;
+        }
+        h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h3 {
+            font-size: 15px;
+            color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glow {
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                color: crimson;
+                transform: scale(1);
+            }
+            
+            100% {
+                color: blue;
+                transform: scale(1.1);
+            }
+        }
+
+        button {
+            background-color: crimson;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 310px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="glow">Welcome</h1>
+        <h3>Click the button below to apply for our funding</h3>
+        <button id="openForm">Get started</button>
+    </div>
+
+    <script>
+        // // JavaScript to open the Google Form link in a new page
+        // document.getElementById("openForm").addEventListener("click", function() {
+        //     window.open("https://your-google-form-link-here", "_blank");
+        // });
+
+         // JavaScript to open the Google Form link in a new page
+    document.getElementById("openForm").addEventListener("click", function() {
+        // Open the Google Form in a new window
+        var googleFormWindow = window.open("https://docs.google.com/forms/d/e/1FAIpQLSdhRuFWbtPWdbpa0Q-_cJzsMF8xnB0O_yNBgDQTLTTwsCmZpw/viewform?embedded=true", "_blank");
+
+        // Check if the Google Form window is closed (form is submitted)
+        var checkFormClosed = setInterval(function() {
+            if (googleFormWindow.closed) {
+                // Display a prompt when the form is closed
+                alert("Successful! We will contact you when we verify your eligibility")
+                clearInterval(checkFormClosed); // Stop checking
+            }
+        }, 1000); // Check every second
+    });
+    </script>
+</body>
+</html>
